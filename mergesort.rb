@@ -7,27 +7,19 @@ class Mergesort
     mitad1 = merge_sort(array.slice(0, mitad_array))
     mitad2 = merge_sort(array.slice(mitad_array, array.count - mitad_array))
     array_temp = []
-    cont_temp = 0
-    cont1 = 0
-    cont2 = 0
+    cont_temp = cont1 = cont2 = 0
 
     while cont1 < mitad1.count && cont2 < mitad2.count
-      if mitad1[cont1] <= mitad2[cont2]
-        array_temp[cont_temp] = mitad1[cont1]
-        cont_temp += 1
-        cont1 += 1
-      else
-        array_temp[cont_temp] = mitad2[cont2]
-        cont_temp += 1
-        cont2 += 1
-      end
+      array_temp[cont_temp], cont1, cont2 = asignar_valor(mitad1[cont1], cont1,
+                                                          mitad2[cont2], cont2)
+      cont_temp += 1
     end
 
-    if cont1 < mitad1.count
-      array_temp = rellenar_array(array_temp, cont_temp, mitad1, cont1)
-    elsif cont2 < mitad2.count
-      array_temp = rellenar_array(array_temp, cont_temp, mitad2, cont2)
-    end
+    array_temp = rellenar_array(array_temp, cont_temp,
+                                mitad1, cont1) if cont1 < mitad1.count
+
+    array_temp = rellenar_array(array_temp, cont_temp,
+                                mitad2, cont2) if cont2 < mitad2.count
 
     array_temp
   end
@@ -39,5 +31,16 @@ class Mergesort
       cont += 1
     end
     array_final
+  end
+
+  def asignar_valor(valor1, cont1, valor2, cont2)
+    if valor1 <= valor2
+      valor_devolver = valor1
+      cont1 += 1
+    else
+      valor_devolver = valor2
+      cont2 += 1
+    end
+    [valor_devolver, cont1, cont2]
   end
 end
