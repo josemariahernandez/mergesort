@@ -17,8 +17,12 @@ class Mergesort_test < Test::Unit::TestCase
 	def test_num_impar_elemementos
 		assert_equal(Mergesort.new.merge_sort([6, 7, -1, 0, 5]), [-1, 0, 5, 6, 7])
 	end
-	
+
 	def test_float
 		assert_equal(Mergesort.new.merge_sort([6.5, 7.3, -1.0, 0, 5.2, 2.1]), [-1.0, 0, 2.1, 5.2, 6.5, 7.3])
+	end
+
+	def test_caracteres
+		assert_equal(Mergesort.new.merge_sort(["e", "b", "d", "z", "a", "s"]), ["a", "b", "d", "e", "s", "z"])
 	end
 end
