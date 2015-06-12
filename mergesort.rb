@@ -10,8 +10,8 @@ class Mergesort
     cont_temp = cont1 = cont2 = 0
 
     while cont1 < mitad1.count && cont2 < mitad2.count
-      array_temp[cont_temp], cont1, cont2 = asignar_valor(mitad1[cont1], cont1,
-                                                          mitad2[cont2], cont2)
+      array_temp[cont_temp], cont1, cont2 =
+              asignar_valor_menor(mitad1[cont1], cont1, mitad2[cont2], cont2)
       cont_temp += 1
     end
 
@@ -33,7 +33,7 @@ class Mergesort
     array_final
   end
 
-  def asignar_valor(valor1, cont1, valor2, cont2)
+  def asignar_valor_menor(valor1, cont1, valor2, cont2)
     if valor1 <= valor2
       valor_devolver = valor1
       cont1 += 1

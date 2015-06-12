@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start
+
 require_relative('mergesort')
 require 'test/unit'
 #
